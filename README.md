@@ -1,7 +1,16 @@
 # stoplicht-communicatie-spec
-Dit document beschrijft de communicatie tussen het kruispunt simulatie en de controller van het stoplicht probleem.
+Dit document beschrijft de communicatie tussen de kruispuntsimulatie en de controller van het stoplichtprobleem.
 
-Het meest voor de hand liggende is dat de simulatie zijn volledige staat in JSON naar de controller stuurt. De controller kan vervolgens identificeren wat er mis met de staat van de stoplichten (en brug), en de nieuwe staat terug sturen.
+### volgorde van acties
+- de simulatie stuurt haar staat in JSON naar de controller.
+- de controller bepaald wat de verkeerslichten moeten doen.
+- de controller stuurt die gewenste staat naar de simulator.
 
-Iedereen die een probleem heeft met deze spec, kan een issue aanmaken in deze repository, en deze kan vervolgens democratisch behandeld worden. 
+*de regressiemeter is geen middle man en luistert mee.*
+
+### problemen met deze oplossing?
+- maak een issue met de repo.
+- communiceer het naar de anderen in discord of de lessen.
+- veranderingen worden democratisch behandeld
+
 Over tijd heen zal deze spec specifieker in gaan op het JSON format.
