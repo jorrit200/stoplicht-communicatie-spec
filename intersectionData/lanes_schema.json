@@ -1,0 +1,109 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Traffic Light Controller Configuration Schema",
+  "type": "object",
+  "properties": {
+    "groups": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9]+$": {
+          "$ref": "#/definitions/group"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["groups"],
+  "definitions": {
+    "group": {
+      "type": "object",
+      "properties": {
+        "intersects_with": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "is_inverse_of": {
+          "anyOf": [
+            {
+              "type": "boolean",
+              "enum": [false]
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]+(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "extends_to": {
+          "anyOf": [
+            {
+              "type": "boolean",
+              "enum": [false]
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]+(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "vehicle_type": {
+          "type": "string",
+          "enum": ["car", "bike", "walk"]
+        },
+        "lanes": {
+          "type": "object",
+          "patternProperties": {
+            "^[0-9]+$": {
+              "$ref": "#/definitions/lane"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "intersects_with",
+        "is_inverse_of",
+        "extends_to",
+        "vehicle_type",
+        "lanes"
+      ],
+      "additionalProperties": false
+    },
+    "lane": {
+      "type": "object",
+      "properties": {
+        "is_inverse_of": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]+(?:\\.[0-9]+)?$"
+            }
+          ]
+        },
+        "extends_to": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]+(?:\\.[0-9]+)?$"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
