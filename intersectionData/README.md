@@ -7,8 +7,11 @@ Deze directory bevat een [json bestand](./lanes.json) die de attributen van vers
 De belangrijkste informatie hier is welke banen een intersectie hebben met elkaar. 
 (De stoplichten van deze banen zouden nooit op hetzelfde moment op groen mogen staan)
 
-Dit bestand is gemaakt op basis van dit mooie kaartje van Danny
+Dit bestand is gemaakt op basis van dit mooie kaartje van Danny:
 ![Intersectie met legenda](../assets/intersection.png)
+
+En dit nog mooiere kaartje van Jorrit:
+![Intersectie brug, met legenda](../assets/Dammelaan%20brug%20taffic%20light%20overview.png)
 
 # Wat heb ik hier aan?
 Dit bestand is gemaakt met een implementatie van een *controller* als target audience.
