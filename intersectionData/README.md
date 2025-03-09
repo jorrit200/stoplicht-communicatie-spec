@@ -1,9 +1,4 @@
-﻿> [!Warning] 
-> Het [json bestand](./lanes.json) is nog niet af. 
-> Tot nu toe wordt de brug en de fiets-kruisingen daar omheen niet mee gerekend.
-> Deze wordt later toegevoegd 
-
-Deze directory bevat een [json bestand](./lanes.json) die de attributen van verschillende stoplichten en hun rijbanen opslaat.
+﻿Deze directory bevat een [json bestand](./lanes.json) die de attributen van verschillende stoplichten en hun rijbanen opslaat.
 De belangrijkste informatie hier is welke banen een intersectie hebben met elkaar. 
 (De stoplichten van deze banen zouden nooit op hetzelfde moment op groen mogen staan)
 
