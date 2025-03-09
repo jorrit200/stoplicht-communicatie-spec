@@ -22,7 +22,7 @@ Bij dit patroon sturen de sockets om de beurt naar elkaar.<br>Dit kan mogelijk g
 
 #### Mogelijk gebruik voor project
 
-![~Figuur~ ~1~<br>~Voorbeeld~ ~Request ~-~ ~Reply~ ~architectuur~](assets/zeromq/req-rep.png)
+![~Figuur~ ~1~<br>~Voorbeeld~ ~Request ~-~ ~Reply~ ~architectuur~](../assets/zeromq/req-rep.png)
 
 De simulator kan met een REQ socket bij de REP socket van de controller vragen (met de data van de simulatie state) om de state van alle stoplichten. De controller geeft dit dan als een reply terug.<br>
 Voor de regressie tester wordt de data die de controller en simulator binnenkrijgen direct doorgestuurd via een extra PUSH naar de regressie tester, deze moet dan vervolgens met een leeg bericht antwoorden op de REP.
@@ -43,7 +43,7 @@ Bij dit patroon verbindt een SUB socket op een PUB socket om data op diverse top
 
 #### Mogelijk gebruik voor project
 
-![~Figuur~ ~2~<br>~Voorbeeld~ ~Publish~ ~-~ ~Subscribe~ ~architectuur~](assets/zeromq/pub-sub.png)
+![~Figuur~ ~2~<br>~Voorbeeld~ ~Publish~ ~-~ ~Subscribe~ ~architectuur~](../assets/zeromq/pub-sub.png)
 
 De simulator en controller kunnen beide een PUB en een SUB socket openen, waarna ze via hun SUB sockets op elkaars PUB sockets verbinden om zo naar elkaar berichten naar elkaar te sturen en van elkaar te ontvangen.<br>
 Hierbij kan bijvoorbeeld gebruik gemaakt worden van topics zoals `simulator/SensorUpdate` of `controller/LightsUpdate`.<br>
@@ -62,7 +62,7 @@ Bij dit patroon wordt er van de PUSH socket gegevens naar PULL sockets gestuurd.
 
 #### Mogelijk gebruik voor project
 
-![~Figuur~ ~3~<br>~Voorbeeld~ ~Pipeline~ ~architectuur~](assets/zeromq/pipeline.png)
+![~Figuur~ ~3~<br>~Voorbeeld~ ~Pipeline~ ~architectuur~](../assets/zeromq/pipeline.png)
 
 De simulator en controller kunnen net zoals bij het Publish-Subscribe patroon beide een PUSH en een PULL socket openen, en van de PUSH socket naar elkaars PULL socket de berichten te sturen.<br>
 Hierbij is het niet mogelijk om van beide kanten direct antwoord terug te geven, behalve als de kant zijn eigen PUSH socket gebruikt om antwoord te bieden.<br>
@@ -81,7 +81,7 @@ Dit patroon is eigenlijk bedoeld voor in-process communicatie tussen threads. Al
 
 #### Mogelijk gebruik voor project
 
-![~Figuur~ ~4~<br>~Voorbeeld~ ~Exclusive~ ~Pair~ ~architectuur~](assets/zeromq/exclusive-pair.png)
+![~Figuur~ ~4~<br>~Voorbeeld~ ~Exclusive~ ~Pair~ ~architectuur~](../assets/zeromq/exclusive-pair.png)
 
 Hierbij kan hetzelfde patroon gehanteerd worden als bij Request-Reply omdat deze sockets ook werken over de andere zeromq transporten buiten `inproc`. Er moet hier wel gelet worden op de nadelen die bij de PAIR sockets komen.<br>
 Bij dit patroon moeten er 4 sockets zijn op de controller en simulator en 2 op de regressie tester om deze onderling te verbinden. 
@@ -98,7 +98,7 @@ Dit patroon is vergelijkbaar met Request-Reply, alleen is het ontvangen en verst
 
 #### Mogelijk gebruik voor project
 
-![~Figuur~ ~5~<br>~Voorbeeld~ ~Dealer~ ~-~ ~Dealer~ ~architectuur~](assets/zeromq/dealer-dealer.png)
+![~Figuur~ ~5~<br>~Voorbeeld~ ~Dealer~ ~-~ ~Dealer~ ~architectuur~](../assets/zeromq/dealer-dealer.png)
 
 Dit patroon is vergelijkbaar aan normale sockets, maar het versturen is multicast naar alle verbonden clients/servers.<br>
 Bij dit patroon kan de regressie tester niet out of box zien waar berichten vandaan komen.
@@ -115,6 +115,6 @@ Dit patroon is vergelijkbaar met Dealer - Dealer, alleen wordt er bij het ontvan
 
 #### Mogelijk gebruik voor project
 
-![~Figuur~ ~6~<br>~Voorbeeld~ ~Router~ ~-~ ~Router~ ~architectuur~](assets/zeromq/router-router.png)
+![~Figuur~ ~6~<br>~Voorbeeld~ ~Router~ ~-~ ~Router~ ~architectuur~](../assets/zeromq/router-router.png)
 
 De gebruikswijze is vergelijkbaar met het Dealer - Dealer patroon, alleen kan de regressie tester wel zien waar het bericht vandaan komt omdat de ROUTER socket dit toevoegt aan een bericht bij het ontvangen. 
