@@ -5,147 +5,167 @@
       "intersects_with": [5, 9, 21, 28, 31, 38],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "car",
-      "lanes": {"1": {}}
+      "vehicle_type": ["car"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "2": {
       "intersects_with": [5, 6, 9, 10, 11, 12, 21, 26, 31, 36],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "car",
-      "lanes": {"1": {}, "2": {}}
+      "vehicle_type": ["car"],
+      "lanes": {"1": {}, "2": {}},
+      "is_physical_barrier": false
     },
     "3": {
       "intersects_with": [5, 6, 7, 8, 11, 21, 24, 31, 34],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "car",
-      "lanes": {"1": {}}
+      "vehicle_type": ["car"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "4": {
       "intersects_with": [8, 12, 22, 23, 32, 33],
       "is_inverse_of": false,
-      "extends_to": false,
-      "vehicle_type": "car",
-      "lanes": {"1": {}}
+      "extends_to": [42],
+      "vehicle_type": ["car"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "5": {
       "intersects_with": [1, 2, 3, 8, 9, 12, 23, 28, 33, 38],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "car",
-      "lanes": {"1": {}}
+      "vehicle_type": ["car"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "6": {
       "intersects_with": [2, 3, 8, 9, 10, 11, 12, 23, 26, 33, 36],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "car",
-      "lanes": {"1": {}}
+      "vehicle_type": ["car"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "7": {
       "intersects_with": [3, 11, 24, 25, 34, 35],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "car",
-      "lanes": {"1": {}}
+      "vehicle_type": ["car"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "8": {
       "intersects_with": [3, 4, 5, 6, 11, 12, 22, 25, 32, 35],
       "is_inverse_of": false,
-      "extends_to": false,
-      "vehicle_type": "car",
-      "lanes": {"1": {}, "2": {}}
+      "extends_to": [42],
+      "vehicle_type": ["car"],
+      "lanes": {"1": {}, "2": {}},
+      "is_physical_barrier": false
     },
     "9": {
       "intersects_with": [1, 2, 5, 6, 11, 12, 25, 28, 35, 38],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "car",
-      "lanes": {"1": {}}
+      "vehicle_type": ["car"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "10": {
       "intersects_with": [2, 6, 26, 27, 36, 37],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "car",
-      "lanes": {"1": {}}
+      "vehicle_type": ["car"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "11": {
       "intersects_with": [2, 3, 6, 7, 8, 9, 24, 27, 34, 37],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "car",
-      "lanes": {"1": {}}
+      "vehicle_type": ["car"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "12": {
       "intersects_with": [2, 4, 5, 6, 8, 9, 22, 27, 32, 37],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "car",
-      "lanes": {"1": {}}
+      "vehicle_type": ["car"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "21": {
       "intersects_with": [1, 2, 3, 4, 8, 12],
       "is_inverse_of": 22,
       "extends_to": false,
-      "vehicle_type": "bike",
-      "lanes": {"1": {}}
+      "vehicle_type": ["bike"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "22": {
       "intersects_with": [1, 2, 3, 4, 8, 12],
       "is_inverse_of": 21,
       "extends_to": false,
-      "vehicle_type": "bike",
-      "lanes": {"1": {}}
+      "vehicle_type": ["bike"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "23": {
       "intersects_with": [3, 4, 5, 6, 7, 11],
       "is_inverse_of": 24,
       "extends_to": false,
-      "vehicle_type": "bike",
-      "lanes": {"1": {}}
+      "vehicle_type": ["bike"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "24": {
       "intersects_with": [3, 4, 5, 6, 7, 11],
       "is_inverse_of": 23,
       "extends_to": false,
-      "vehicle_type": "bike",
-      "lanes": {"1": {}}
+      "vehicle_type": ["bike"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "25": {
       "intersects_with": [2, 6, 7, 8, 9, 10],
       "is_inverse_of": 26,
       "extends_to": false,
-      "vehicle_type": "bike",
-      "lanes": {"1": {}}
+      "vehicle_type": ["bike"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "26": {
       "intersects_with": [2, 6, 7, 8, 9, 10],
       "is_inverse_of": 25,
       "extends_to": false,
-      "vehicle_type": "bike",
-      "lanes": {"1": {}}
+      "vehicle_type": ["bike"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "27": {
       "intersects_with": [1, 5, 9, 10, 11, 12],
       "is_inverse_of": 28,
       "extends_to": false,
-      "vehicle_type": "bike",
-      "lanes": {"1": {}}
+      "vehicle_type": ["bike"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "28": {
       "intersects_with": [1, 5, 9, 10, 11, 12],
       "is_inverse_of": 27,
       "extends_to": false,
-      "vehicle_type": "bike",
-      "lanes": {"1": {}}
+      "vehicle_type": ["bike"],
+      "lanes": {"1": {}},
+      "is_physical_barrier": false
     },
     "31": {
       "intersects_with": [1, 2, 3],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "walk",
+      "vehicle_type":["walk"],
       "lanes": {
         "1": {
           "is_inverse_of": "31.2",
@@ -154,13 +174,14 @@
         "2": {
           "is_inverse_of": "31.1"
         }
-      }
+      },
+      "is_physical_barrier": false
     },
     "32": {
       "intersects_with": [4, 8, 12],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "walk",
+      "vehicle_type": ["walk"],
       "lanes": {
         "1": {
           "is_inverse_of": "32.2"
@@ -169,13 +190,14 @@
           "is_inverse_of": "32.1",
           "extends_to": "32.2"
         }
-      }
+      },
+      "is_physical_barrier": false
     },
     "33": {
       "intersects_with": [4, 5, 6],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "walk",
+      "vehicle_type": ["walk"],
       "lanes": {
         "1": {
           "is_inverse_of": "33.2",
@@ -184,13 +206,14 @@
         "2": {
           "is_inverse_of": "33.1"
         }
-      }
+      },
+      "is_physical_barrier": false
     },
     "34": {
       "intersects_with": [3, 7, 11],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "walk",
+      "vehicle_type": ["walk"],
       "lanes": {
         "1": {
           "is_inverse_of": "34.2"
@@ -199,13 +222,14 @@
           "is_inverse_of": "34.1",
           "extends_to": "33.2"
         }
-      }
+      },
+      "is_physical_barrier": false
     },
     "35": {
       "intersects_with": [7, 8, 9],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "walk",
+      "vehicle_type": ["walk"],
       "lanes": {
         "1": {
           "is_inverse_of": "35.2",
@@ -214,13 +238,14 @@
         "2": {
           "is_inverse_of": "35.1"
         }
-      }
+      },
+      "is_physical_barrier": false
     },
     "36": {
       "intersects_with": [2, 6, 10],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "walk",
+      "vehicle_type": ["walk"],
       "lanes": {
         "1": {
           "is_inverse_of": "36.2"
@@ -229,13 +254,14 @@
           "is_inverse_of": "36.1",
           "extends_to": "35.2"
         }
-      }
+      },
+      "is_physical_barrier": false
     },
     "37": {
       "intersects_with": [10, 11, 12],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "walk",
+      "vehicle_type": ["walk"],
       "lanes": {
         "1": {
           "is_inverse_of": "37.2",
@@ -244,13 +270,14 @@
         "2": {
           "is_inverse_of": "37.1"
         }
-      }
+      },
+      "is_physical_barrier": false
     },
     "38": {
       "intersects_with": [1, 5, 9],
       "is_inverse_of": false,
       "extends_to": false,
-      "vehicle_type": "walk",
+      "vehicle_type": ["walk"],
       "lanes": {
         "1": {
           "is_inverse_of": "38.2"
@@ -259,7 +286,105 @@
           "is_inverse_of": "38.1",
           "extends_to": "37.2"
         }
-      }
+      },
+      "is_physical_barrier": false
+    },
+    "41": {
+      "intersects_with": [71, 72],
+      "is_inverse_of": false,
+      "extends_to": [1, 2, 3],
+      "vehicle_type": ["car"],
+      "lanes": {"1":  {}},
+      "is_physical_barrier": false
+    },
+    "42": {
+      "intersects_with": [71, 72],
+      "is_inverse_of": false,
+      "extends_to": false,
+      "vehicle_type": ["car"],
+      "lanes": {"1":  {}},
+      "is_physical_barrier": false
+    },
+    "51": {
+      "intersects_with": [71, 72],
+      "is_inverse_of": 54,
+      "extends_to": false,
+      "vehicle_type": ["walk", "bike"],
+      "lanes": {"1":  {}},
+      "is_physical_barrier": false
+    },
+    "52": {
+      "intersects_with": [71, 72],
+      "is_inverse_of": 53,
+      "extends_to": false,
+      "vehicle_type": ["walk", "bike"],
+      "lanes": {"1":  {}},
+      "is_physical_barrier": false
+    },
+    "53": {
+      "intersects_with": [71, 72],
+      "is_inverse_of": 52,
+      "extends_to": false,
+      "vehicle_type": ["walk", "bike"],
+      "lanes": {"1":  {}},
+      "is_physical_barrier": false
+    },
+    "54": {
+      "intersects_with": [71, 72],
+      "is_inverse_of": 51,
+      "extends_to": false,
+      "vehicle_type": ["walk", "bike"],
+      "lanes": {"1":  {}},
+      "is_physical_barrier": false
+    },
+    "61": {
+      "intersects_with": [71, 72],
+      "is_inverse_of": 64,
+      "extends_to": false,
+      "vehicle_type": ["walk", "bike"],
+      "lanes": {"1":  {}},
+      "is_physical_barrier": true
+    },
+    "62": {
+      "intersects_with": [71, 72],
+      "is_inverse_of": 63,
+      "extends_to": false,
+      "vehicle_type": ["walk", "bike"],
+      "lanes": {"1":  {}},
+      "is_physical_barrier": true
+    },
+    "63": {
+      "intersects_with": [71, 72],
+      "is_inverse_of": 62,
+      "extends_to": false,
+      "vehicle_type": ["walk", "bike"],
+      "lanes": {"1":  {}},
+      "is_physical_barrier": true
+    },
+    "64": {
+      "intersects_with": [71, 72],
+      "is_inverse_of": 61,
+      "extends_to": false,
+      "vehicle_type": ["walk", "bike"],
+      "lanes": {"1":  {}},
+      "is_physical_barrier": true
+    },
+    "71": {
+      "intersects_with": [41, 42, 51, 52, 53, 54, 61, 62, 63, 64, 72],
+      "is_inverse_of": 72,
+      "extends_to": false,
+      "vehicle_type": ["boat"],
+      "lanes": {"1":  {}},
+      "is_physical_barrier": true
+    },
+    "72": {
+      "intersects_with": [41, 42, 51, 52, 53, 54, 61, 62, 63, 64, 71],
+      "is_inverse_of": 71,
+      "extends_to": false,
+      "vehicle_type": ["boat"],
+      "lanes": {"1":  {}},
+      "is_physical_barrier": true
     }
+
   }
 }
