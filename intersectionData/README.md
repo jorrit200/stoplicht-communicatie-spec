@@ -26,6 +26,33 @@ Er zijn twee manieren voor je controller om dit bestand te bereiken:
 
 Als je het bestand lokaal plaatst weet je zeker dat je controller zich altijd hetzelfde zal gedragen. Maar als je het live ophaalt, en je een goede parser schrijft, heb je een controller die zich automatisch aanpast aan de afgesproken standaard
 
+# Spec
+Voor exact format, raadpleeg [het schema](./lanes_schema.json). Deze veranderd nooit, tenzij absoluut noodzakelijk
+
+Elk stoplicht bestaat uit een id met het format `"g.l"` waar `g` voor de stoplichtgroep staat, en `l` voor de specifieke baan (lane).
+De meeste eigenschappen van een stoplicht die dit document specificeert gelden voor de hele groep (dus gelijk voor elke baan in de groep).
+Het json bestand beschrijft een aantal properties van deze stoplichten, en in een paar gevallen een aantal specifieke properties per baan (lane)
+
+## Groups
+Het top-level object bevat een "groups" object (`$.groups`), dit is een object met een key voor elke stoplichtgroep.
+Elk object bevat de volgende properties:
+- `intersects_with` `int[]` Beschrijft met welke andere stoplichtgroepen deze groep intersectie heeft. Als je deze groep, en een groep in deze lijst op groen zet, kun je een collisie veroorzaken.
+- `is_invese_of` `int|false` Als 2 stoplichten over een 2-richtingsbaan gaan, waar bij één verantwoordelijk is voor de ene richting, en de ander verantwoordelijk voor de andere richting, dan zijn deze stoplichten elkaars inverse. Een int verwijst naar een andere stoplicht groep, false betekent dat deze groep geen inverse heeft. Let op: dit geld alleen als het over fysiek dezelfde baan gaat, dus 21 en 22 zijn wel inverse van elkaar, maar 2 en 8 niet. Het gaat hier om 2 richtingsbanen, dus stoplichten die elkaars inverse zijn kunnen *wel* tegelijkertijd op groen staan (tenzij ze ook een intersectie met elkaar hebben, zoals bij 71 en 72)
+- `extends_to` `int[]|false` Als het verkeer van één stoplicht altijd bij een ander stoplicht terecht komt staat dat hier vermeld. Een int array betekent dat het verkeer van dit stoplicht gegarandeerd bij één van de vermelde stoplicht-groepen komt. false betekent dat er niet vast gesteld kan worden bij welke andere stoplichten het verkeer komt, omdat dit verkeer de simulatie kan verlaten.
+- `vehicle_type` `("walk"|"bike"|"car"|"boat")[]` Beschrijft wat voor voertuigen rijden op deze banen, en reageren op deze stoplichtgroep.
+- `lanes` `lane` Een object die de properties per baan beschrijft, in plaats van per groep. Bevat een key per baan (`l`) in deze groep (`g`). Elke waarde bevat alleen informatie die afwijkt van de informatie in de groep (`g`), een leeg object `{}` betekent dus dat die baan (`l`) bestaat en alle properties overeenkomen met de groep.
+- `is_physical_barrier` `bool` Als dit "stoplicht" op rood staat, is het fysiek onmogelijk om door te rijden. Dit is relevant voor de simulatie: als een voertuig onwettig gedrag heeft, of een hulpdienstvoertuig kan besluiten door rood te rijden. Dat kan bij dit stoplicht dus niet.
+
+## lanes
+In de meeste gevallen is het genoeg om alleen naar de group objecten te kijken, want de meeste properties (en de belangrijkste) gelden altijd voor de hele groep.
+Maar de properties: `is_inverse_of`, en `extends_to` kunnen afwijken per lane (`l`).
+
+Per baan (`l`) verwijzen deze properties naar andere banen, in tegenstelling tot dezelfde properties in groepen die naar hele groepen verwijzen. Daarom gebruiken deze properties het `string` type, waar dezelfde properties in een group object het `int` type gebruiken, met het format `"g.l"` waar `g` naar de group verwijst, en `l` naar de lane.
+
+Lane objecten *kunnen* de volgende properties hebben:
+- `is_inverse_of` `string` deze baan is de inverse vaan de aangegeven andere baan.
+- `extends_to` `string` deze baan lijdt alleen maar naar de aangegeven andere baan.
+
 # Ik haat json parsen
 Dan heb ik hier dit mooie intersectie tabelletje:
 
