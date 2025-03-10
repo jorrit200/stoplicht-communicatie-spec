@@ -1,0 +1,12 @@
+﻿{
+  "queue": [
+    {
+      "baan": "8.2",
+      "simulatie_tijd_ms": 1231456352542
+    },
+    {
+      "baan": "3.1",
+      "simulatie_tijd_ms": 1231456650000
+    }
+  ]
+}
