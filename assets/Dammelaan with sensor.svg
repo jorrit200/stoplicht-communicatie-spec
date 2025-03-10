@@ -25,13 +25,13 @@
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
-     inkscape:zoom="0.39245885"
-     inkscape:cx="462.46886"
-     inkscape:cy="317.23071"
+     inkscape:zoom="1.1100413"
+     inkscape:cx="983.29679"
+     inkscape:cy="358.99567"
      inkscape:window-width="1920"
-     inkscape:window-height="1009"
-     inkscape:window-x="1072"
-     inkscape:window-y="444"
+     inkscape:window-height="1008"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="g1" />
   <g
@@ -67,6 +67,13 @@
        y="468.45105" />
     <rect
        style="fill:#e6e81c;fill-opacity:0.133333;stroke:#e6e81c;stroke-width:6;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1-8"
+       width="258.54892"
+       height="98.194534"
+       x="1210.9281"
+       y="417.65054" />
+    <rect
+       style="fill:#e6e81c;fill-opacity:0.133333;stroke:#e6e81c;stroke-width:6;stroke-dasharray:none;stroke-opacity:1"
        id="rect1-7"
        width="36.034695"
        height="50.448574"
@@ -75,15 +82,22 @@
     <rect
        style="fill:#e6e81c;fill-opacity:1;stroke:#e6e81c;stroke-width:6;stroke-dasharray:none;stroke-opacity:1"
        id="rect1-7-7"
-       width="301.03067"
-       height="36.434299"
+       width="362.28961"
+       height="38.236061"
        x="1004.1279"
        y="543.60486" />
     <rect
+       style="fill:#e6e81c;fill-opacity:1;stroke:#e6e81c;stroke-width:5.15215;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1-7-7-1"
+       width="261.33945"
+       height="39.083916"
+       x="1209.5266"
+       y="375.40259" />
+    <rect
        style="fill:#e6e81c;fill-opacity:1;stroke:#e6e81c;stroke-width:6;stroke-dasharray:none;stroke-opacity:1"
        id="rect1-7-7-3"
-       width="301.03067"
-       height="36.434299"
+       width="362.28967"
+       height="31.929989"
        x="1003.3704"
        y="590.93573" />
     <text
@@ -95,7 +109,17 @@
          sodipodi:role="line"
          id="tspan1"
          x="1007.749"
-         y="571.39752">Sensor: brug_file_A</tspan></text>
+         y="571.39752">Sensor: brug_file_ver_A</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:29.3333px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
+       x="1211.2289"
+       y="404.37701"
+       id="text1-2"><tspan
+         sodipodi:role="line"
+         id="tspan1-7"
+         x="1211.2289"
+         y="404.37701">Sensor: brug_file</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:29.3333px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
@@ -105,6 +129,6 @@
          sodipodi:role="line"
          id="tspan1-2"
          x="1005.2853"
-         y="618.06128">Sensor: brug_file_B</tspan></text>
+         y="618.06128">Sensor: brug_file_ver_B</tspan></text>
   </g>
 </svg>
