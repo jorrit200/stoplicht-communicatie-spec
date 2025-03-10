@@ -1,0 +1,10 @@
+﻿{
+  "1.1": {
+    "voor": false,
+    "achter": false
+  },
+  "22.1": {
+    "voor": true,
+    "achter": false
+  }
+}
