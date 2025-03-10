@@ -367,7 +367,17 @@
       "extends_to": false,
       "vehicle_type": ["walk", "bike"],
       "lanes": {"1":  {}},
-      "is_physical_barrier": true
+      "is_physical_barrier": true,
+      "transition_requirements": {
+        "red": [
+          {
+            "type": "sensor",
+            "sensor": "brug_wegdek",
+            "sensor_state": false,
+            "required": true
+          }
+        ]
+      }
     },
     "71": {
       "intersects_with": [41, 42, 51, 52, 53, 54, 61, 62, 63, 64, 72],
