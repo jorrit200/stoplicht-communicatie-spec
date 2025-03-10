@@ -385,6 +385,22 @@
       "lanes": {"1":  {}},
       "is_physical_barrier": true
     }
-
+  },
+  "sensors": {
+    "brug_wegdek": {
+      "vehicles": ["car", "walk", "bike"]
+    },
+    "brug_water": {
+      "vehicles": ["boat"]
+    },
+    "brug_file": {
+      "vehicles": ["car"]
+    },
+    "brug_file_ver_A": {
+      "vehicles": ["car"]
+    },
+    "brig_file_ver_B": {
+      "vehicles": ["car"]
+    }
   }
 }
