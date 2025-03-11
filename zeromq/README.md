@@ -1,3 +1,8 @@
+> [!Note]
+> Dit bestand is geschreven ter informatie, en zonder besluitvorming.
+> Het beschrijft een aantal mogelijke patronen bij het gebruik van ZeroMQ, maar er is al gekozen voor het [PUB/SUB-Patroon](#publish---subscribe).
+> De gegeven voorbeelden zijn niet onderdeel van de specificatie.
+
 # ZeroMQ message patterns
 In dit document worden ZeroMQ berichtpatronen en hoe deze mogelijk in het project gebruikt kunnen worden uitgewerkt.
 ## Beschikbare patterns
