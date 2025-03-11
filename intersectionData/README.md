@@ -3,10 +3,10 @@ De belangrijkste informatie hier is welke banen een intersectie hebben met elkaa
 (De stoplichten van deze banen zouden nooit op hetzelfde moment op groen mogen staan)
 
 Dit bestand is gemaakt op basis van dit mooie kaartje van Danny:
-![Intersectie met legenda](../assets/intersection.png)
+![Intersectie met legenda](../assets/Kruispunt_verkeerslichten.png)
 
 En dit nog mooiere kaartje van Jorrit:
-![Intersectie brug, met legenda](../assets/Dammelaan%20brug%20taffic%20light%20overview.png)
+![Intersectie brug, met legenda](../assets/Brug_verkeerslichten.png)
 
 # Wat heb ik hier aan?
 Dit bestand is gemaakt met een implementatie van een *controller* als target audience, maar kan ook handig zijn voor de simulatie.
@@ -87,7 +87,7 @@ voorbeeld:
 ```
 Dit is een group met 2 lanes die elkaars inverse zijn. 
 `31.1` En `31.2` zijn dus 2 stoplichten die over dezelfde lane gaan, 
-maar `31.1` gaat over de zuid-richting en `32.2` gaat over de noord-richting (zie [intersectie figuur](../assets/intersection.png)).
+maar `31.1` gaat over de zuid-richting en `32.2` gaat over de noord-richting (zie [intersectie figuur](../assets/Kruispunt_verkeerslichten.png)).
 Deze lanes hebben geen intersectie met elkaar (lanes in dezelfde group kunnen geen intersectie met elkaar hebben, en loop verkeer is altijd 2-richtingsverkeer),
 en kunnen dus tegelijkertijd op groen staan, maar het gebeurt ook dat er maar één op groen staat in de praktijk.
 Lane `31.1` lijdt naar lane `32.1`.
