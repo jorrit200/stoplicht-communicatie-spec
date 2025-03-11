@@ -118,15 +118,16 @@ Sommige groups hebben requirements die gematched moeten worden, als de controlle
       }
     ]
   }
+}
 ````
 Dit "stoplicht" (een slagboom) heeft een requirement om naar de "red" state te gaan, en een requirement om naar de "green" state te gaan.
 De requirement om naar de "red" state te gaan eist dat de "brug_wegdek" sensor niks detecteert.
 Dit is zodat de slagboom niet dicht klapt als er nog iemand om de brug staat.
-De slagboom mag pas weer open (`state="green"`) als er geen boot in het water ligt (want dan staat de brug open).
+De slagboom mag pas weer open (`state="green"`) als er geen boot onder de brug ligt (want dan staat de brug open).
 
 Deze requirements bevatten alleen maar sensor requirements, die eisen dat een speciale sensor een specifieke staat heeft.
 Maar er bestaat ook een requirement die eist dat een ander stoplicht een specifieke staat heeft.
-Deze wordt gebruikt in een `transition_blocker`, die de transitie naar een bepaalde staat blocker als alle eisen daaraan zijn gematached:
+Deze wordt gebruikt in een `transition_blocker`, die de transitie naar een bepaalde staat blocken als alle eisen daaraan zijn gematached:
 
 ````json
 "4": {
