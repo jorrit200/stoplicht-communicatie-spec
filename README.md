@@ -34,7 +34,7 @@ De communicatie gaat via een aantal topics.
 Elk topic heeft één publisher, de [controller](#controller) of de [simulatie](#simulatie), 
 en de andere twee [onderdelen](#onderdelen) subscriben op deze topic. 
 De [regressie tester](#regressie-tester) subscribed dus op alle topics.
-De topics staat beschreven in [topics](./topics/spec.md), 
+De topics staat beschreven in [topics](./topics/README.md), 
 waar voor elke topic een specificatie en voorbeeld beschikbaar zijn.
  
 ## Problemen met deze oplossing?

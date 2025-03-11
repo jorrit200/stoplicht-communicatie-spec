@@ -17,7 +17,7 @@ Er wordt gebruik gemaakt van het PUB/SUB-patroon.
 - Pakketverlies wordt afgehandeld achter de schermen.
 - Het protocol houdt ***G E E N*** rekening met ongelukken etc.
 - Het protocol richt zich ***N I E T*** op een specifieke implementatie (van controller en/of simulatie)
-- Simulatie geeft simulatietijd door aan controller (via topic [tijd](./tijd/spec.md)).
+- Simulatie geeft simulatietijd door aan controller (via topic [tijd](./tijd/README.md)).
 - Elke keer dat een topic gestuurd wordt, bevat dit de volledige data van die topic. (geen gedeeltelijke update berichten)
 
 Voor elke topic is een aparte specificatie geschreven.
