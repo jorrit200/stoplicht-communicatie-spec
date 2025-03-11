@@ -42,13 +42,13 @@ Elk object bevat de volgende properties:
 Voorbeeld:
 ```json
 "2": {
-      "intersects_with": [5, 6, 9, 10, 11, 12, 21, 26, 31, 36],
-      "is_inverse_of": false,
-      "extends_to": false,
-      "vehicle_type": ["car"],
-      "lanes": {"1": {}, "2": {}},
-      "is_physical_barrier": false
-    },
+  "intersects_with": [5, 6, 9, 10, 11, 12, 21, 26, 31, 36],
+  "is_inverse_of": false,
+  "extends_to": false,
+  "vehicle_type": ["car"],
+  "lanes": {"1": {}, "2": {}},
+  "is_physical_barrier": false
+}
 ```
 Beschrijft group 2, met stoplicht `2.1` en `2.2`, die geen afwijking hebben van de rest van de group. 
 Deze rijbaan group is niet de inverse van een andere, en lijdt niet tot een specifieke andere rijbaan group. 
@@ -69,21 +69,21 @@ Lane objecten *kunnen* de volgende properties hebben:
 voorbeeld:
 ```json
 "31": {
-      "intersects_with": [1, 2, 3],
-      "is_inverse_of": false,
-      "extends_to": false,
-      "vehicle_type":["walk"],
-      "lanes": {
-        "1": {
-          "is_inverse_of": "31.2",
-          "extends_to": "32.1"
-        },
-        "2": {
-          "is_inverse_of": "31.1"
-        }
-      },
-      "is_physical_barrier": false
+  "intersects_with": [1, 2, 3],
+  "is_inverse_of": false,
+  "extends_to": false,
+  "vehicle_type":["walk"],
+  "lanes": {
+    "1": {
+      "is_inverse_of": "31.2",
+      "extends_to": "32.1"
     },
+    "2": {
+      "is_inverse_of": "31.1"
+    }
+  },
+  "is_physical_barrier": false
+}
 ```
 Dit is een group met 2 lanes die elkaars inverse zijn. 
 `31.1` En `31.2` zijn dus 2 stoplichten die over dezelfde lane gaan, 
@@ -91,6 +91,104 @@ maar `31.1` gaat over de zuid-richting en `32.2` gaat over de noord-richting (zi
 Deze lanes hebben geen intersectie met elkaar (lanes in dezelfde group kunnen geen intersectie met elkaar hebben, en loop verkeer is altijd 2-richtingsverkeer),
 en kunnen dus tegelijkertijd op groen staan, maar het gebeurt ook dat er maar één op groen staat in de praktijk.
 Lane `31.1` lijdt naar lane `32.1`.
+
+## Transition requirements/blockers
+Sommige groups hebben requirements die gematched moeten worden, als de controller de staat van een group wilt veranderen.
+````json
+"64": {
+  "intersects_with": [71, 72],
+  "is_inverse_of": 61,
+  "extends_to": false,
+  "vehicle_type": ["walk", "bike"],
+  "lanes": {"1":  {}},
+  "is_physical_barrier": true,
+  "transition_requirements": {
+    "green": [
+      {
+        "type": "sensor",
+        "sensor": "brug_water",
+        "sensor_state": false
+      }
+    ],
+    "red": [
+      {
+        "type": "sensor",
+        "sensor": "brug_wegdek",
+        "sensor_state": false
+      }
+    ]
+  }
+}
+````
+Dit "stoplicht" (een slagboom) heeft een requirement om naar de "red" state te gaan, en een requirement om naar de "green" state te gaan.
+De requirement om naar de "red" state te gaan eist dat de "brug_wegdek" sensor niks detecteert.
+Dit is zodat de slagboom niet dicht klapt als er nog iemand om de brug staat.
+De slagboom mag pas weer open (`state="green"`) als er geen boot onder de brug ligt (want dan staat de brug open).
+
+Deze requirements bevatten alleen maar sensor requirements, die eisen dat een speciale sensor een specifieke staat heeft.
+Maar er bestaat ook een requirement die eist dat een ander stoplicht een specifieke staat heeft.
+Deze wordt gebruikt in een `transition_blocker`, die de transitie naar een bepaalde staat blocken als alle eisen daaraan zijn gematached:
+
+````json
+"4": {
+  "intersects_with": [8, 12, 22, 23, 32, 33],
+  "is_inverse_of": false,
+  "extends_to": [42],
+  "vehicle_type": ["car"],
+  "lanes": {"1": {}},
+  "is_physical_barrier": false,
+  "transition_blockers": {
+    "green": [
+      {
+        "type": "sensor",
+        "sensor": "brug_file",
+        "sensor_state": true
+      },
+      {
+        "type": "sensor",
+        "sensor": "brug_file_ver_A",
+        "sensor_state": true
+      },
+      {
+        "type": "sensor",
+        "sensor": "brug_file_ver_B",
+        "sensor_state": true
+      },
+      {
+        "type": "other_traffic_light",
+        "group": 53,
+        "traffic_light_state": "red"
+      }
+   ]
+  }
+}
+````
+Dit stoplicht kan niet op groen, wanneer alle file sensoren van de brug aan staan, en de brug open staat/gaat.
+Dit is omdat het verkeer misschien in de file komt te staan voordat het het verkeer voorbij is.
+
+## Sensoren
+De speciale sensoren, waar ook al naar verwezen wordt in de transition_requirements hierboven, staan ook in dit document.
+Per sensor wordt aangegeven welke voertuigen deze sensor kunnen activeren. 
+Dit is omdat in 2d simulaties een paar sensoren fysiek overlappen (brug_wegdek, brug_water).
+```json
+"sensors": {
+    "brug_wegdek": {
+      "vehicles": ["car", "walk", "bike"]
+    },
+    "brug_water": {
+      "vehicles": ["boat"]
+    },
+    "brug_file": {
+      "vehicles": ["car"]
+    },
+    "brug_file_ver_A": {
+      "vehicles": ["car"]
+    },
+    "brig_file_ver_B": {
+      "vehicles": ["car"]
+    }
+}
+```
 
 # Ik haat json parsen
 Dan heb ik hier dit mooie intersectie tabelletje:

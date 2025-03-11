@@ -11,9 +11,19 @@
         }
       },
       "additionalProperties": false
+    },
+    "sensors": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/sensor"
+      },
+      "description": "The definition of the different agreed upon \"special sensors\"."
     }
   },
-  "required": ["groups"],
+  "required": [
+    "groups",
+    "sensors"
+  ],
   "definitions": {
     "group": {
       "type": "object",
@@ -22,13 +32,16 @@
           "type": "array",
           "items": {
             "type": "number"
-          }
+          },
+          "description": "The groups that intersect with this group. When this group, and any of the groups in this array are green at the same time, collisions can occur."
         },
         "is_inverse_of": {
           "anyOf": [
             {
               "type": "boolean",
-              "enum": [false]
+              "enum": [
+                false
+              ]
             },
             {
               "type": "number"
@@ -37,13 +50,16 @@
               "type": "string",
               "pattern": "^[0-9]+(?:\\.[0-9]+)?$"
             }
-          ]
+          ],
+          "description": "The group that takes the same physical space as this group, but represents the opposite direction. `false` If no such group exists."
         },
         "extends_to": {
           "anyOf": [
             {
               "type": "boolean",
-              "enum": [false]
+              "enum": [
+                false
+              ]
             },
             {
               "type": "array",
@@ -60,15 +76,22 @@
               },
               "uniqueItems": true
             }
-          ]
+          ],
+          "description": "A set of groups, of which you are guaranteed to end op in one of them, if you follow any of the lanes in this group. `false` If no guarantees can be made."
         },
         "vehicle_type": {
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["car", "bike", "walk", "boat"]
+            "enum": [
+              "car",
+              "bike",
+              "walk",
+              "boat"
+            ]
           },
-          "uniqueItems": true
+          "uniqueItems": true,
+          "description": "The vehicle types that use this group."
         },
         "lanes": {
           "type": "object",
@@ -78,11 +101,21 @@
             }
           },
           "additionalProperties": false,
-          "minProperties": 1
+          "minProperties": 1,
+          "description": "An object with a key for each lane (even if they have no specific properties). Each group must have at least one lane."
         },
         "is_physical_barrier": {
           "type": "boolean",
-          "default": false
+          "default": false,
+          "description": "Whether this traffic light would physically stop a vehicle (boom gate, bridge)"
+        },
+        "transition_requirements": {
+          "$ref": "#/definitions/transition_requirements_prop",
+          "description": "Conditions that need to be met, for the traffic-lights in this group to be able to transition to certain states"
+        },
+        "transition_blockers": {
+          "$ref": "#/definitions/transition_requirements_prop",
+          "description": "Conditions that, if met, block the transition to a certain state."
         }
       },
       "required": [
@@ -93,7 +126,8 @@
         "lanes",
         "is_physical_barrier"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "The different traffic light groups in the simulation."
     },
     "lane": {
       "type": "object",
@@ -107,7 +141,8 @@
               "type": "string",
               "pattern": "^[0-9]+(?:\\.[0-9]+)?$"
             }
-          ]
+          ],
+          "description": "A lane that takes the same physical space as this one, but represents the opposite direction."
         },
         "extends_to": {
           "anyOf": [
@@ -118,10 +153,124 @@
               "type": "string",
               "pattern": "^[0-9]+(?:\\.[0-9]+)?$"
             }
+          ],
+          "description": "The lane you are guaranteed to end up in, if you follow this lane to the end."
+        }
+      },
+      "additionalProperties": false
+    },
+    "transition_requirement": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "sensor"
+              ],
+              "default": "sensor",
+              "description": "The type of requirement."
+            },
+            "sensor": {
+              "type": "string",
+              "description": "The name of the sensor that needs to be checked"
+            },
+            "sensor_state": {
+              "type": "boolean",
+              "default": false,
+              "description": "Whether the sensor need to be true or false for this transition to happen"
+            }
+          },
+          "required": [
+            "type",
+            "sensor",
+            "sensor_state"
           ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "other_traffic_light"
+              ],
+              "description": "The type of requirement."
+            },
+            "group": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 72,
+              "description": "The traffic light group that needs to match te requirement."
+            },
+            "traffic_light_state": {
+              "type": "string",
+              "enum": [
+                "green",
+                "orange",
+                "red"
+              ],
+              "description": "The state the other traffic lights that needs to match."
+            }
+          },
+          "required": [
+            "type",
+            "group",
+            "traffic_light_state"
+          ]
+        }
+      ]
+    },
+    "transition_requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/transition_requirement"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "transition_requirements_prop": {
+      "type": "object",
+      "properties": {
+        "green": {
+          "$ref": "#/definitions/transition_requirements",
+          "description": "The requirements that need to match to allow this traffic light to switch to green"
+        },
+        "orange": {
+          "$ref": "#/definitions/transition_requirements",
+          "description": "The requirements that need to match to allow this traffic light to switch to orange"
+        },
+        "red": {
+          "$ref": "#/definitions/transition_requirements",
+          "description": "The requirements that need to match to allow this traffic light to switch to red"
         }
       },
       "additionalProperties": false
     }
+  },
+  "sensor": {
+    "type": "object",
+    "properties": {
+      "vehicles": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "car",
+            "walk",
+            "bike",
+            "boat"
+          ]
+        },
+        "uniqueItems": true,
+        "description": "The different vehicle types that can enable this sensor. (there are sensors that overlap in 2d space, this is to avoid cars on the bridge enabling the water sensor)"
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "vehicles"
+    ]
   }
 }
+
