@@ -18,10 +18,10 @@ In dit document worden ZeroMQ berichtpatronen en hoe deze mogelijk in het projec
 
 Bij dit patroon sturen de sockets om de beurt naar elkaar.<br>Dit kan mogelijk gebruikt worden om de state op te vragen.<br>Zie [hier](https://zeromq.org/socket-api/?language=c&library=libzmq#request-reply-pattern) voor de documentatie
 
-| Socket | Richting | Framing | Notities |
-| :- | :-: | :- | :- |
-| [REQ](https://zeromq.org/socket-api/?language=c&library=libzmq#req-socket) | TX | DIY Framing | Kan niks sturen als er nog een reply verwacht wordt |
-| [REP](https://zeromq.org/socket-api/?language=c&library=libzmq#rep-socket) | RX | DIY Framing | Kan niks sturen als er nog een request verwacht wordt |
+| Socket                                                                     | Richting | Framing     | Notities                                              |
+|:---------------------------------------------------------------------------|:--------:|:------------|:------------------------------------------------------|
+| [REQ](https://zeromq.org/socket-api/?language=c&library=libzmq#req-socket) |    TX    | DIY Framing | Kan niks sturen als er nog een reply verwacht wordt   |
+| [REP](https://zeromq.org/socket-api/?language=c&library=libzmq#rep-socket) |    RX    | DIY Framing | Kan niks sturen als er nog een request verwacht wordt |
 
 <sub>Tabel 1 <br> Sockets van Request - Reply patroon</sub>
 
@@ -38,12 +38,12 @@ Voor de regressie tester wordt de data die de controller en simulator binnenkrij
 
 Bij dit patroon verbindt een SUB socket op een PUB socket om data op diverse topics te ontvangen.<br>Zie [hier](https://zeromq.org/socket-api/#publish-subscribe-pattern) voor de documentatie.
 
-| Socket | Richting | Framing | Notities |
-| :- | :-: | :- | :- |
-| [PUB](https://zeromq.org/socket-api/#pub-socket) | TX | Multipart, eerst topic en daarna data |
-| [SUB](https://zeromq.org/socket-api/#sub-socket) | RX | Zoals PUB stuurt | Verstuurt niks naar PUB
-| [XPUB](https://zeromq.org/socket-api/#xpub-socket) | TX | Net zoals PUB | Ontvangt subscription requests van XSUB. Ondersteunt ook SUB.
-| [XSUB](https://zeromq.org/socket-api/#xsub-socket) | RX | Net zoals PUB | Stuurt een subscription
+| Socket                                             | Richting | Framing                               | Notities                                                      |
+|:---------------------------------------------------|:--------:|:--------------------------------------|:--------------------------------------------------------------|
+| [PUB](https://zeromq.org/socket-api/#pub-socket)   |    TX    | Multipart, eerst topic en daarna data |                                                               |
+| [SUB](https://zeromq.org/socket-api/#sub-socket)   |    RX    | Zoals PUB stuurt                      | Verstuurt niks naar PUB                                       |
+| [XPUB](https://zeromq.org/socket-api/#xpub-socket) |    TX    | Net zoals PUB                         | Ontvangt subscription requests van XSUB. Ondersteunt ook SUB. |
+| [XSUB](https://zeromq.org/socket-api/#xsub-socket) |    RX    | Net zoals PUB                         | Stuurt een subscription                                       |
 
 <sub>Tabel 2<br>Sockets van Publish - Subscribe patroon</sub>
 
@@ -62,10 +62,10 @@ De regressietester kan alle berichten afluisteren door een subscriptie af te nem
 
 Bij dit patroon wordt er van de PUSH socket gegevens naar PULL sockets gestuurd.<br>Dit patroon is vergelijkbaar met Request-Reply, alleen komt er geen antwoord terug van de clients.<br>Zie [hier](https://zeromq.org/socket-api/#pipeline-pattern) voor de documentatie.
 
-| Socket | Richting | Framing | Notities |
-| :- | :-: | :- | :- |
-| [PUSH](https://zeromq.org/socket-api/#push-socket) | TX | DIY | |
-| [PULL](https://zeromq.org/socket-api/#pull-socket) | RX | DIY | |
+| Socket                                             | Richting | Framing | Notities |
+|:---------------------------------------------------|:--------:|:--------|:---------|
+| [PUSH](https://zeromq.org/socket-api/#push-socket) |    TX    | DIY     |          |
+| [PULL](https://zeromq.org/socket-api/#pull-socket) |    RX    | DIY     |          |
 
 <sub>Tabel 3<br>Sockets van Pipeline patroon</sub>
 
@@ -84,9 +84,9 @@ De regresietester kan alle berichten afluisteren door met twee PULL sockets op d
 Bij het exclusive pair patroon verbinden twee PAIR sockets met elkaar en kunnen beide frames versturen en ontvangen.<br>
 Dit patroon is eigenlijk bedoeld voor in-process communicatie tussen threads. Als een PAIR socket verbindt op een andere PAIR die al een verbinding heeft, dan dropt deze PAIR de bestaande verbinding om de nieuwe verbinding te accepteren.
 
-| Socket | Richting | Framing | Notities |
-| :- | :-: | :- | :- |
-| [PAIR](https://zeromq.org/socket-api/#pair-socket) | TX/RX | DIY | |
+| Socket                                             | Richting | Framing | Notities |
+|:---------------------------------------------------|:--------:|:--------|:---------|
+| [PAIR](https://zeromq.org/socket-api/#pair-socket) |  TX/RX   | DIY     |          |
 
 <sub>Tabel 4<br>Sockets van Exclusive Pair patroon</sub>
 
@@ -103,9 +103,9 @@ Bij dit patroon moeten er 4 sockets zijn op de controller en simulator en 2 op d
 
 Dit patroon is vergelijkbaar met Request-Reply, alleen is het ontvangen en versturen van frames asynchroon en wacht de DEALER dus niet op antwoord. Ook zijn er minder sockets nodig, omdat DEALER sockets op meerdere sockets kunnen verbinden of verbinding van krijgen.
 
-| Socket | Richting | Framing | Notities |
-| :- | :-: | :- | :- |
-| [DEALER](https://zeromq.org/socket-api/#dealer-socket) | TX/RX | DIY | Verstuurt asynchroon |
+| Socket                                                 | Richting | Framing | Notities             |
+|:-------------------------------------------------------|:--------:|:--------|:---------------------|
+| [DEALER](https://zeromq.org/socket-api/#dealer-socket) |  TX/RX   | DIY     | Verstuurt asynchroon |
 
 <sub>Tabel 5<br>Sockets van Dealer - Dealer patroon</sub>
 
@@ -122,9 +122,9 @@ Bij dit patroon kan de regressie tester niet out of box zien waar berichten vand
 
 Dit patroon is vergelijkbaar met Dealer - Dealer, alleen wordt er bij het ontvangen van berichten een frame toegevoegd die identificeert waar het bericht vandaan komt.
 
-| Socket | Richting | Framing | Notities |
-| :- | :-: | :- | :- |
-| [ROUTER](https://zeromq.org/socket-api/#router-socket) | TX/RX | Multipart, identificatie + data | Verstuurt asynchroon |
+| Socket                                                 | Richting | Framing                         | Notities             |
+|:-------------------------------------------------------|:--------:|:--------------------------------|:---------------------|
+| [ROUTER](https://zeromq.org/socket-api/#router-socket) |  TX/RX   | Multipart, identificatie + data | Verstuurt asynchroon |
 
 <sub>Tabel 6<br>Sockets van Router - Router patroon</sub>
 
