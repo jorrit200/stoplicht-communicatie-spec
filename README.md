@@ -37,7 +37,39 @@ De [regressie tester](#regressie-tester) subscribed dus op alle topics.
 De topics staat beschreven in [topics](./topics/README.md), 
 waar voor elke topic een specificatie en voorbeeld beschikbaar zijn.
  
-## Problemen met deze oplossing?
+## Concepten
+
+### Stoplichten
+Een stoplicht wordt geïdentificeerd met een string in het format `"g.l"`, 
+waar `g` voor group (groep) staat, en `l` voor lane (baan).
+De locatie van de stoplichten staan beschreven in [kruispunt_verkeerslichten.png](./assets/Kruispunt_verkeerslichten.png)
+en [brug_verkeerslichten.png](./assets/Brug_verkeerslichten.png)
+
+Elk stoplicht heeft een staat, die kan zijn: `"groen"|"oranje"|"rood"`. 
+Deze staat wordt bepaald door de [controller](#controller), en weergeven en aangehouden door de [simulatie](#simulatie).
+
+De stoplichten 61-64 zijn hefbomen voor de brug.
+
+Els stoplicht heeft 2 sensoren (hoewel de tweede niet altijd wordt gebruikt).
+De eerste ligt vlag voor de stopstreep van het stoplicht, en de tweede ligt 35 meter daar achter.
+Deze sensoren geven aan of er voertuigen wachten op dat stoplicht, of er toevallig overheen rijden.
+
+Er is een heelhoop informatie beschikbaar over de stoplichten in [intersection data](./intersectionData/README.md) beschikbaar.
+Deze informatie *mag* gebruikt worden door de [controller](#controller).
+
+### Sensoren
+Er zijn 2 type sensoren: verkeerslicht sensoren (al gedeeltelijk besproken in [de kop hierboven](#stoplichten)), en *speciale sensoren*.
+
+Speciale sensoren zijn niet direct aan één wegdek te koppelen.
+Deze sensoren geven aan of er een voertuig in gebied zit. (Zie [[brug_verkeerslichten_senoren.svg](./assets/Brug_verkeerslichten_sensoren.svg)])
+voor het gebied. De controller kan deze sonoren gebruiken om regels toe te passen zoals:
+- De hefbomen mogen niet dicht als er een voertuig op het wegdek van de brug is
+- Vortuigen die de oost richting van de Damenlaan op willen, moeten wachten tot er geen file voor de brug is, of de brug open staat.
+
+Deze speciale regels zijn ook inbegrepen in het [Intersection_data JSON-bestand](./intersectionData/README.md)
+
+
+# Problemen met deze oplossing?
 - Als je een verandering wilt zien in wat de afspraken zijn, of daar een vraag over hebt, maak een [issue](https://github.com/jorrit200/stoplicht-communicatie-spec/issues) aan.
 - Als je denkt dat deze spec afwijkt van een gemaakte afspraak, of dat een gemaakte afspraak nog niet geïmplementeerd is, maak een [pull-request](https://github.com/jorrit200/stoplicht-communicatie-spec/pulls) aan.
 - communiceer het naar de anderen in discord of de lessen.
