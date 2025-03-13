@@ -11,5 +11,5 @@ De controller geeft dit voertuig zo snel als mogelijk (zonder ongelukken te vero
 
 ## Regels
 - Voorrang onderling voorrangsvoertuigen ligt bij eigen implementatie.
-- De aangeven tijd is de tijd dat het voertuig relevant wordt voor de verkeerssituatie.
-- De aangeven tijd is in simulatie milliseconden
+- De aangegeven tijd is de tijd dat het voertuig relevant wordt voor de verkeerssituatie.
+- De aangegeven tijd is in simulatie milliseconden

@@ -17,4 +17,4 @@ De controller kan de staat van de rijbaansensoren gebruiken voor het optimaliser
 ## Regels
 - Dit topic bestaat uit een object met een key voor elk stoplicht id (`"g.l"`).
 - Elke rijbaan heeft een voor en achter sensor, ook als de achterste niet gebruikt wordt (voetgangers) (dan staat achter altijd op `false`)
-- Dit topic bevat alleen sensoren die direct aan een stoplicht id te verbinden zijn (zie [speciale sensoren](../sensoren_speciaal/spec.md))
+- Dit topic bevat alleen sensoren die direct aan een stoplicht id te verbinden zijn (zie [speciale sensoren](../sensoren_speciaal/README))
