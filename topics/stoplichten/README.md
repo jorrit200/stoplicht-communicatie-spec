@@ -1,4 +1,4 @@
-﻿# Spec - sensoren speciaal
+﻿# Spec - stoplichten
 - Publisher: controller 
 - Subscriber: simulatie
 
