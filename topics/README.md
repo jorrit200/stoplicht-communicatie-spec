@@ -7,7 +7,9 @@ Er zijn een aantal topics:
 - tijd
 - voorrangsvoertuig
 
-Elk van deze topics heeft een publisher en een subscriber. De publisher is de eigenaar van de data, en update de inhoud van deze topic.
+![Envelope](../assets/zeromq/envelope.png)
+
+De topics hebben één publisher en één subscriber. De gedachte is dat een publisher een envelope (topic) met een body (bericht) stuurt. De subscriber is dan verantwoordelijk voor het verder afhandelen van de envelope. De publisher is de eigenaar van de data, en update de inhoud van deze topic.
 De subscriber krijgt een update als een topic veranderd, en kan de inhoud alleen maar lezen.
 De synchronisatie van topic-data tussen publisher en subscriber wordt beheerd door [ZeroMQ](../zeromq/README.md).
 Er wordt gebruik gemaakt van het PUB/SUB-patroon.
