@@ -2,11 +2,13 @@
   "queue": [
     {
       "baan": "8.2",
-      "simulatie_tijd_ms": 1231456352542
+      "simulatie_tijd_ms": 1231456352542,
+      "prioriteit": 1
     },
     {
       "baan": "3.1",
-      "simulatie_tijd_ms": 1231456650000
+      "simulatie_tijd_ms": 1231456650000,
+      "prioriteit": 2
     }
   ]
 }
