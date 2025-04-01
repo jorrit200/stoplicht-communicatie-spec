@@ -1,0 +1,10 @@
+{
+  "simulator": {
+    "host": "<ip address>",
+    "port": 0
+  },
+  "controller": {
+    "host": "<ip address>",
+    "port": 0
+  }
+}
