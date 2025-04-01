@@ -3,6 +3,7 @@
 Er zijn een aantal topics:
 - sensoren_rijbaan
 - sensoren_speciaal
+- sensoren_bruggen
 - stoplichten
 - tijd
 - voorrangsvoertuig
