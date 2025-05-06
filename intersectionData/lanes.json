@@ -2,7 +2,7 @@
   "$schema": "./lanes_schema.json",
   "groups": {
     "1": {
-      "intersects_with": [5, 9, 21, 28, 31, 38],
+      "intersects_with": [5, 9, 21, 22, 27, 28, 31, 38],
       "is_inverse_of": false,
       "extends_to": false,
       "vehicle_type": ["car"],
@@ -10,7 +10,7 @@
       "is_physical_barrier": false
     },
     "2": {
-      "intersects_with": [5, 6, 9, 10, 11, 12, 21, 26, 31, 36],
+      "intersects_with": [5, 6, 9, 10, 11, 12, 21, 22, 25, 26, 31, 36],
       "is_inverse_of": false,
       "extends_to": false,
       "vehicle_type": ["car"],
@@ -18,7 +18,7 @@
       "is_physical_barrier": false
     },
     "3": {
-      "intersects_with": [5, 6, 7, 8, 11, 21, 24, 31, 34],
+      "intersects_with": [5, 6, 7, 8, 11, 12, 21, 22, 23, 24, 31, 34],
       "is_inverse_of": false,
       "extends_to": false,
       "vehicle_type": ["car"],
@@ -26,7 +26,7 @@
       "is_physical_barrier": false
     },
     "4": {
-      "intersects_with": [8, 12, 22, 23, 32, 33],
+      "intersects_with": [8, 12, 21, 22, 23, 24, 32, 33],
       "is_inverse_of": false,
       "extends_to": [42],
       "vehicle_type": ["car"],
@@ -58,7 +58,7 @@
       }
     },
     "5": {
-      "intersects_with": [1, 2, 3, 8, 9, 12, 23, 28, 33, 38],
+      "intersects_with": [1, 2, 3, 8, 9, 12, 23, 24, 27, 28, 33, 38],
       "is_inverse_of": false,
       "extends_to": false,
       "vehicle_type": ["car"],
@@ -66,7 +66,7 @@
       "is_physical_barrier": false
     },
     "6": {
-      "intersects_with": [2, 3, 8, 9, 10, 11, 12, 23, 26, 33, 36],
+      "intersects_with": [2, 3, 8, 9, 10, 11, 23, 24, 25, 26, 33, 36],
       "is_inverse_of": false,
       "extends_to": false,
       "vehicle_type": ["car"],
@@ -74,7 +74,7 @@
       "is_physical_barrier": false
     },
     "7": {
-      "intersects_with": [3, 11, 24, 25, 34, 35],
+      "intersects_with": [3, 11, 23, 24, 25, 26, 34, 35],
       "is_inverse_of": false,
       "extends_to": false,
       "vehicle_type": ["car"],
@@ -82,7 +82,7 @@
       "is_physical_barrier": false
     },
     "8": {
-      "intersects_with": [3, 4, 5, 6, 11, 12, 22, 25, 32, 35],
+      "intersects_with": [3, 4, 5, 6, 11, 12, 21, 22, 25, 26, 32, 35],
       "is_inverse_of": false,
       "extends_to": [42],
       "vehicle_type": ["car"],
@@ -114,7 +114,7 @@
       }
     },
     "9": {
-      "intersects_with": [1, 2, 5, 6, 11, 12, 25, 28, 35, 38],
+      "intersects_with": [1, 2, 5, 6, 11, 12, 25, 26, 27, 28, 35, 38],
       "is_inverse_of": false,
       "extends_to": false,
       "vehicle_type": ["car"],
@@ -122,7 +122,7 @@
       "is_physical_barrier": false
     },
     "10": {
-      "intersects_with": [2, 6, 26, 27, 36, 37],
+      "intersects_with": [2, 6, 25, 26, 27, 28, 36, 37],
       "is_inverse_of": false,
       "extends_to": false,
       "vehicle_type": ["car"],
@@ -130,7 +130,7 @@
       "is_physical_barrier": false
     },
     "11": {
-      "intersects_with": [2, 3, 6, 7, 8, 9, 24, 27, 34, 37],
+      "intersects_with": [2, 3, 6, 7, 8, 9, 23, 24, 27, 28, 34, 37],
       "is_inverse_of": false,
       "extends_to": false,
       "vehicle_type": ["car"],
@@ -138,7 +138,7 @@
       "is_physical_barrier": false
     },
     "12": {
-      "intersects_with": [2, 4, 5, 6, 8, 9, 22, 27, 32, 37],
+      "intersects_with": [2, 3, 4, 5, 8, 9, 21, 22, 27, 28, 32, 37],
       "is_inverse_of": false,
       "extends_to": false,
       "vehicle_type": ["car"],
@@ -362,7 +362,7 @@
       "is_physical_barrier": false
     },
     "41": {
-      "intersects_with": [71, 72],
+      "intersects_with": [71, 72, 81],
       "is_inverse_of": false,
       "extends_to": [1, 2, 3],
       "vehicle_type": ["car"],
@@ -370,7 +370,7 @@
       "is_physical_barrier": false
     },
     "42": {
-      "intersects_with": [71, 72],
+      "intersects_with": [71, 72, 81],
       "is_inverse_of": false,
       "extends_to": false,
       "vehicle_type": ["car"],
@@ -378,7 +378,7 @@
       "is_physical_barrier": false
     },
     "51": {
-      "intersects_with": [71, 72],
+      "intersects_with": [71, 72, 81],
       "is_inverse_of": 54,
       "extends_to": false,
       "vehicle_type": ["walk", "bike"],
@@ -386,7 +386,7 @@
       "is_physical_barrier": false
     },
     "52": {
-      "intersects_with": [71, 72],
+      "intersects_with": [71, 72, 81],
       "is_inverse_of": 53,
       "extends_to": false,
       "vehicle_type": ["walk", "bike"],
@@ -394,7 +394,7 @@
       "is_physical_barrier": false
     },
     "53": {
-      "intersects_with": [71, 72],
+      "intersects_with": [71, 72, 81],
       "is_inverse_of": 52,
       "extends_to": false,
       "vehicle_type": ["walk", "bike"],
@@ -402,7 +402,7 @@
       "is_physical_barrier": false
     },
     "54": {
-      "intersects_with": [71, 72],
+      "intersects_with": [71, 72, 81],
       "is_inverse_of": 51,
       "extends_to": false,
       "vehicle_type": ["walk", "bike"],
@@ -434,7 +434,7 @@
       }
     },
     "62": {
-      "intersects_with": [71, 72],
+      "intersects_with": [71, 72, 81],
       "is_inverse_of": 63,
       "extends_to": false,
       "vehicle_type": ["walk", "bike"],
@@ -458,7 +458,7 @@
       }
     },
     "63": {
-      "intersects_with": [71, 72],
+      "intersects_with": [71, 72, 81],
       "is_inverse_of": 62,
       "extends_to": false,
       "vehicle_type": ["walk", "bike"],
@@ -482,7 +482,7 @@
       }
     },
     "64": {
-      "intersects_with": [71, 72],
+      "intersects_with": [71, 72, 81],
       "is_inverse_of": 61,
       "extends_to": false,
       "vehicle_type": ["walk", "bike"],
@@ -548,6 +548,50 @@
           {
             "type": "sensor",
             "sensor": "brug_wegdek",
+            "sensor_state": false
+          }
+        ]
+      }
+    },
+    "81": {
+      "intersects_with": [41, 42, 51, 52, 53, 54, 61, 62, 63, 64, 71, 72],
+      "is_inverse_of": false,
+      "extends_to": false,
+      "vehicle_type": [],
+      "lanes": {"1": {}},
+      "is_physical_barrier": true,
+      "transition_requirements": {
+        "green": [
+          {
+            "type": "sensor",
+            "sensor": "brug_wegdek",
+            "sensor_state": false
+          },
+          {
+            "type": "other_traffic_light",
+            "group": 61,
+            "traffic_light_state": "red"
+          },
+          {
+            "type": "other_traffic_light",
+            "group": 62,
+            "traffic_light_state": "red"
+          },
+          {
+            "type": "other_traffic_light",
+            "group": 63,
+            "traffic_light_state": "red"
+          },
+          {
+            "type": "other_traffic_light",
+            "group": 64,
+            "traffic_light_state": "red"
+          }
+        ],
+        "red": [
+          {
+            "type": "sensor",
+            "sensor": "brug_water",
             "sensor_state": false
           }
         ]
