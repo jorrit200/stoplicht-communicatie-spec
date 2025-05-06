@@ -552,50 +552,50 @@
           }
         ]
       }
-    }
-  },
-  "81": {
-    "intersects_with": [41, 42, 51, 52, 53, 54, 61, 62, 63, 64, 71, 71],
-    "is_inverse_of": false,
-    "extends_to": false,
-    "vehicle_type": [],
-    "lanes": {"1": {}},
-    "is_physical_barrier": true,
-    "transition_requirements": {
-      "green": [
-        {
-          "type": "sensor",
-          "sensor": "brug_wegdek",
-          "sensor_state": false
-        },
-        {
-          "type": "other_traffic_light",
-          "group": 61,
-          "traffic_light_state": "red"
-        },
-        {
-          "type": "other_traffic_light",
-          "group": 62,
-          "traffic_light_state": "red"
-        },
-        {
-          "type": "other_traffic_light",
-          "group": 63,
-          "traffic_light_state": "red"
-        },
-        {
-          "type": "other_traffic_light",
-          "group": 64,
-          "traffic_light_state": "red"
-        }
-      ],
-      "red": [
-        {
-          "type": "sensor",
-          "senor": "brug_water",
-          "sensor_state": false
-        }
-      ]
+    },
+    "81": {
+      "intersects_with": [41, 42, 51, 52, 53, 54, 61, 62, 63, 64, 71, 72],
+      "is_inverse_of": false,
+      "extends_to": false,
+      "vehicle_type": [],
+      "lanes": {"1": {}},
+      "is_physical_barrier": true,
+      "transition_requirements": {
+        "green": [
+          {
+            "type": "sensor",
+            "sensor": "brug_wegdek",
+            "sensor_state": false
+          },
+          {
+            "type": "other_traffic_light",
+            "group": 61,
+            "traffic_light_state": "red"
+          },
+          {
+            "type": "other_traffic_light",
+            "group": 62,
+            "traffic_light_state": "red"
+          },
+          {
+            "type": "other_traffic_light",
+            "group": 63,
+            "traffic_light_state": "red"
+          },
+          {
+            "type": "other_traffic_light",
+            "group": 64,
+            "traffic_light_state": "red"
+          }
+        ],
+        "red": [
+          {
+            "type": "sensor",
+            "sensor": "brug_water",
+            "sensor_state": false
+          }
+        ]
+      }
     }
   },
   "sensors": {
