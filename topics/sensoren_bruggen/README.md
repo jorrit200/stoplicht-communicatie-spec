@@ -5,6 +5,8 @@
 ## Publisher
 De simulatie published de staat van de brugsensoren, wanneer deze staat verandert.
 
+Er is één brug sensor: `81.1`.
+
 De start status is elke sensor op `dicht`.
 
 Een sensor word gedefiniëerd met het id en de staat
