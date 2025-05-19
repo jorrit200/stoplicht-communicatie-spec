@@ -40,16 +40,6 @@
             "sensor_state": true
           },
           {
-            "type": "sensor",
-            "sensor": "brug_file_ver_A",
-            "sensor_state": true
-          },
-          {
-            "type": "sensor",
-            "sensor": "brug_file_ver_B",
-            "sensor_state": true
-          },
-          {
             "type": "other_traffic_light",
             "group": 53,
             "traffic_light_state": "red"
@@ -96,16 +86,6 @@
             "sensor_state": true
           },
           {
-            "type": "sensor",
-            "sensor": "brug_file_ver_A",
-            "sensor_state": true
-          },
-          {
-            "type": "sensor",
-            "sensor": "brug_file_ver_B",
-            "sensor_state": true
-          },
-          {
             "type": "other_traffic_light",
             "group": 53,
             "traffic_light_state": "red"
@@ -149,16 +129,6 @@
           {
             "type": "sensor",
             "sensor": "brug_file",
-            "sensor_state": true
-          },
-          {
-            "type": "sensor",
-            "sensor": "brug_file_ver_A",
-            "sensor_state": true
-          },
-          {
-            "type": "sensor",
-            "sensor": "brug_file_ver_B",
             "sensor_state": true
           },
           {
@@ -409,104 +379,8 @@
       "lanes": {"1":  {}},
       "is_physical_barrier": false
     },
-    "61": {
-      "intersects_with": [71, 72],
-      "is_inverse_of": 64,
-      "extends_to": false,
-      "vehicle_type": ["walk", "bike"],
-      "lanes": {"1":  {}},
-      "is_physical_barrier": true,
-      "transition_requirements": {
-        "green": [
-          {
-            "type": "sensor",
-            "sensor": "brug_water",
-            "sensor_state": false
-          }
-        ],
-        "red": [
-          {
-            "type": "sensor",
-            "sensor": "brug_wegdek",
-            "sensor_state": false
-          }
-        ]
-      }
-    },
-    "62": {
-      "intersects_with": [71, 72, 81],
-      "is_inverse_of": 63,
-      "extends_to": false,
-      "vehicle_type": ["walk", "bike"],
-      "lanes": {"1":  {}},
-      "is_physical_barrier": true,
-      "transition_requirements": {
-        "green": [
-          {
-            "type": "sensor",
-            "sensor": "brug_water",
-            "sensor_state": false
-          }
-        ],
-        "red": [
-          {
-            "type": "sensor",
-            "sensor": "brug_wegdek",
-            "sensor_state": false
-          }
-        ]
-      }
-    },
-    "63": {
-      "intersects_with": [71, 72, 81],
-      "is_inverse_of": 62,
-      "extends_to": false,
-      "vehicle_type": ["walk", "bike"],
-      "lanes": {"1":  {}},
-      "is_physical_barrier": true,
-      "transition_requirements": {
-        "green": [
-          {
-            "type": "sensor",
-            "sensor": "brug_water",
-            "sensor_state": false
-          }
-        ],
-        "red": [
-          {
-            "type": "sensor",
-            "sensor": "brug_wegdek",
-            "sensor_state": false
-          }
-        ]
-      }
-    },
-    "64": {
-      "intersects_with": [71, 72, 81],
-      "is_inverse_of": 61,
-      "extends_to": false,
-      "vehicle_type": ["walk", "bike"],
-      "lanes": {"1":  {}},
-      "is_physical_barrier": true,
-      "transition_requirements": {
-        "green": [
-          {
-            "type": "sensor",
-            "sensor": "brug_water",
-            "sensor_state": false
-          }
-        ],
-        "red": [
-          {
-            "type": "sensor",
-            "sensor": "brug_wegdek",
-            "sensor_state": false
-          }
-        ]
-      }
-    },
     "71": {
-      "intersects_with": [41, 42, 51, 52, 53, 54, 61, 62, 63, 64, 72],
+      "intersects_with": [41, 42, 51, 52, 53, 54, 72],
       "is_inverse_of": 72,
       "extends_to": false,
       "vehicle_type": ["boat"],
@@ -530,7 +404,7 @@
       }
     },
     "72": {
-      "intersects_with": [41, 42, 51, 52, 53, 54, 61, 62, 63, 64, 71],
+      "intersects_with": [41, 42, 51, 52, 53, 54, 71],
       "is_inverse_of": 71,
       "extends_to": false,
       "vehicle_type": ["boat"],
@@ -554,7 +428,7 @@
       }
     },
     "81": {
-      "intersects_with": [41, 42, 51, 52, 53, 54, 61, 62, 63, 64, 71, 72],
+      "intersects_with": [41, 42, 51, 52, 53, 54, 71, 72],
       "is_inverse_of": false,
       "extends_to": false,
       "vehicle_type": [],
@@ -566,26 +440,6 @@
             "type": "sensor",
             "sensor": "brug_wegdek",
             "sensor_state": false
-          },
-          {
-            "type": "other_traffic_light",
-            "group": 61,
-            "traffic_light_state": "red"
-          },
-          {
-            "type": "other_traffic_light",
-            "group": 62,
-            "traffic_light_state": "red"
-          },
-          {
-            "type": "other_traffic_light",
-            "group": 63,
-            "traffic_light_state": "red"
-          },
-          {
-            "type": "other_traffic_light",
-            "group": 64,
-            "traffic_light_state": "red"
           }
         ],
         "red": [

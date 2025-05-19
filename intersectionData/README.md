@@ -95,35 +95,35 @@ Lane `31.1` lijdt naar lane `32.1`.
 ## Transition requirements/blockers
 Sommige groups hebben requirements die gematched moeten worden, als de controller de staat van een group wilt veranderen.
 ````json
-"64": {
-  "intersects_with": [71, 72],
-  "is_inverse_of": 61,
+"71": {
+  "intersects_with": [41, 42, 51, 52, 53, 54, 72],
+  "is_inverse_of": 72,
   "extends_to": false,
-  "vehicle_type": ["walk", "bike"],
+  "vehicle_type": ["boat"],
   "lanes": {"1":  {}},
   "is_physical_barrier": true,
   "transition_requirements": {
-    "green": [
+    "red": [
       {
         "type": "sensor",
         "sensor": "brug_water",
         "sensor_state": false
       }
     ],
-    "red": [
-      {
-        "type": "sensor",
-        "sensor": "brug_wegdek",
-        "sensor_state": false
-      }
-    ]
+  "green": [
+    {
+      "type": "sensor",
+      "sensor": "brug_wegdek",
+      "sensor_state": false
+    }
+  ]
   }
 }
 ````
-Dit "stoplicht" (een slagboom) heeft een requirement om naar de "red" state te gaan, en een requirement om naar de "green" state te gaan.
-De requirement om naar de "red" state te gaan eist dat de "brug_wegdek" sensor niks detecteert.
-Dit is zodat de slagboom niet dicht klapt als er nog iemand om de brug staat.
-De slagboom mag pas weer open (`state="green"`) als er geen boot onder de brug ligt (want dan staat de brug open).
+Dit stoplicht heeft een requirement om naar de "red" state te gaan, en een requirement om naar de "green" state te gaan.
+De requirement om naar de "red" state te gaan eist dat de "brug_water" sensor niks detecteert.
+Dit is zodat de brug niet dicht klapt als er nog een boot onder staat.
+De brug mag pas weer open (`state="green"`) als het wegdek leeg is.
 
 Deze requirements bevatten alleen maar sensor requirements, die eisen dat een speciale sensor een specifieke staat heeft.
 Maar er bestaat ook een requirement die eist dat een ander stoplicht een specifieke staat heeft.
@@ -142,16 +142,6 @@ Deze wordt gebruikt in een `transition_blocker`, die de transitie naar een bepaa
       {
         "type": "sensor",
         "sensor": "brug_file",
-        "sensor_state": true
-      },
-      {
-        "type": "sensor",
-        "sensor": "brug_file_ver_A",
-        "sensor_state": true
-      },
-      {
-        "type": "sensor",
-        "sensor": "brug_file_ver_B",
         "sensor_state": true
       },
       {
@@ -179,12 +169,6 @@ Dit is omdat in 2d simulaties een paar sensoren fysiek overlappen (brug_wegdek, 
       "vehicles": ["boat"]
     },
     "brug_file": {
-      "vehicles": ["car"]
-    },
-    "brug_file_ver_A": {
-      "vehicles": ["car"]
-    },
-    "brig_file_ver_B": {
       "vehicles": ["car"]
     }
 }
