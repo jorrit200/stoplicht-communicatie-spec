@@ -428,7 +428,7 @@
       }
     },
     "81": {
-      "intersects_with": [41, 42, 51, 52, 53, 54, 71, 72],
+      "intersects_with": [41, 42, 51, 52, 53, 54],
       "is_inverse_of": false,
       "extends_to": false,
       "vehicle_type": [],
