@@ -95,35 +95,35 @@ Lane `31.1` lijdt naar lane `32.1`.
 ## Transition requirements/blockers
 Sommige groups hebben requirements die gematched moeten worden, als de controller de staat van een group wilt veranderen.
 ````json
-"64": {
-  "intersects_with": [71, 72],
-  "is_inverse_of": 61,
+"71": {
+  "intersects_with": [41, 42, 51, 52, 53, 54, 72],
+  "is_inverse_of": 72,
   "extends_to": false,
-  "vehicle_type": ["walk", "bike"],
+  "vehicle_type": ["boat"],
   "lanes": {"1":  {}},
   "is_physical_barrier": true,
   "transition_requirements": {
-    "green": [
+    "red": [
       {
         "type": "sensor",
         "sensor": "brug_water",
         "sensor_state": false
       }
     ],
-    "red": [
-      {
-        "type": "sensor",
-        "sensor": "brug_wegdek",
-        "sensor_state": false
-      }
-    ]
+  "green": [
+    {
+      "type": "sensor",
+      "sensor": "brug_wegdek",
+      "sensor_state": false
+    }
+  ]
   }
 }
 ````
-Dit "stoplicht" (een slagboom) heeft een requirement om naar de "red" state te gaan, en een requirement om naar de "green" state te gaan.
-De requirement om naar de "red" state te gaan eist dat de "brug_wegdek" sensor niks detecteert.
-Dit is zodat de slagboom niet dicht klapt als er nog iemand om de brug staat.
-De slagboom mag pas weer open (`state="green"`) als er geen boot onder de brug ligt (want dan staat de brug open).
+Dit stoplicht heeft een requirement om naar de "red" state te gaan, en een requirement om naar de "green" state te gaan.
+De requirement om naar de "red" state te gaan eist dat de "brug_water" sensor niks detecteert.
+Dit is zodat de brug niet dicht klapt als er nog een boot onder staat.
+De brug mag pas weer open (`state="green"`) als het wegdek leeg is.
 
 Deze requirements bevatten alleen maar sensor requirements, die eisen dat een speciale sensor een specifieke staat heeft.
 Maar er bestaat ook een requirement die eist dat een ander stoplicht een specifieke staat heeft.
@@ -142,16 +142,6 @@ Deze wordt gebruikt in een `transition_blocker`, die de transitie naar een bepaa
       {
         "type": "sensor",
         "sensor": "brug_file",
-        "sensor_state": true
-      },
-      {
-        "type": "sensor",
-        "sensor": "brug_file_ver_A",
-        "sensor_state": true
-      },
-      {
-        "type": "sensor",
-        "sensor": "brug_file_ver_B",
         "sensor_state": true
       },
       {
@@ -180,12 +170,6 @@ Dit is omdat in 2d simulaties een paar sensoren fysiek overlappen (brug_wegdek, 
     },
     "brug_file": {
       "vehicles": ["car"]
-    },
-    "brug_file_ver_A": {
-      "vehicles": ["car"]
-    },
-    "brig_file_ver_B": {
-      "vehicles": ["car"]
     }
 }
 ```
@@ -193,48 +177,45 @@ Dit is omdat in 2d simulaties een paar sensoren fysiek overlappen (brug_wegdek, 
 # Ik haat json parsen
 Dan heb ik hier dit mooie intersectie tabelletje:
 
-| 🚦 | 1 | 2 | 3  | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 21 | 22 | 23  | 24 | 25 | 26 | 27 | 28 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 41 | 42 | 51 | 52 | 53 | 54 | 61 | 62 | 63 | 64 | 71 | 72 |
-|:---|:-:|:-:|:--:|:-:|:-:|:-:|:-:|:-:|:-:|:--:|:--:|:--:|:--:|:--:|:---:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| 1  |   |   |    |   | x |   |   |   | x |    |    |    | x  |    |     |    |    |    |    | x  | x  |    |    |    |    |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |
-| 2  |   |   |    |   | x | x |   |   | x | x  | x  | x  | x  |    |     |    |    | x  |    |    | x  |    |    |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 3  |   |   |    |   | x | x | x | x |   |    | x  |    | x  |    |     | x  |    |    |    |    | x  |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 4  |   |   |    |   |   |   |   | x |   |    |    | x  |    | x  |  x  |    |    |    |    |    |    | x  | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 5  | x | x | x  |   |   |   |   | x | x |    |    | x  |    |    |  x  |    |    |    |    | x  |    |    | x  |    |    |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |
-| 6  |   | x | x  |   |   |   |   | x | x | x  | x  | x  |    |    |  x  |    |    | x  |    |    |    |    | x  |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 7  |   |   | x  |   |   |   |   |   |   |    | x  |    |    |    |     | x  | x  |    |    |    |    |    |    | x  | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 8  |   |   | x  | x | x | x |   |   |   |    | x  | x  |    | x  |     |    | x  |    |    |    |    | x  |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 9  | x | x |    |   | x | x |   |   |   |    | x  | x  |    |    |     |    | x  |    |    | x  |    |    |    |    | x  |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |
-| 10 |   | x |    |   |   | x |   |   |   |    |    |    |    |    |     |    |    | x  | x  |    |    |    |    |    |    | x  | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 11 |   | x | x  |   |   | x | x | x | x |    |    |    |    |    |     | x  |    |    | x  |    |    |    |    | x  |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 12 |   | x |    | x | x | x |   | x | x |    |    |    |    | x  |     |    |    |    | x  |    |    | x  |    |    |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 21 | x | x | x  | x |   |   |   | x |   |    |    | x  |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 22 | x | x | x  | x |   |   |   | x |   |    |    | x  |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 23 |   |   | x  | x | x | x | x |   |   |    | x  |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 24 |   |   | x  | x | x | x | x |   |   |    | x  |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 25 |   | x |    |   |   | x | x | x | x | x  |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 26 |   | x |    |   |   | x | x | x | x | x  |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 27 | x |   |    |   | x |   |   |   | x | x  | x  | x  |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 28 | x |   |    |   | x |   |   |   | x | x  | x  | x  |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 31 | x | x | x  |   |   |   |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 32 |   |   |    | x |   |   |   | x |   |    |    | x  |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 33 |   |   |    | x | x | x |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 34 |   |   | x  |   |   |   | x |   |   |    | x  |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 35 |   |   |    |   |   |   | x | x | x |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 36 |   | x |    |   |   | x |   |   |   | x  |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 37 |   |   |    |   |   |   |   |   |   | x  | x  | x  |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 38 | x |   |    |   | x |   |   |   | x |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
-| 41 |   |   |    |   |   |   |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  |
-| 42 |   |   |    |   |   |   |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  |
-| 51 |   |   |    |   |   |   |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  |
-| 52 |   |   |    |   |   |   |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  |
-| 53 |   |   |    |   |   |   |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  |
-| 54 |   |   |    |   |   |   |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  |
-| 61 |   |   |    |   |   |   |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  |
-| 62 |   |   |    |   |   |   |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  |
-| 63 |   |   |    |   |   |   |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  |
-| 64 |   |   |    |   |   |   |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  |
-| 71 |   |   |    |   |   |   |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  | x  | x  | x  | x  | x  | x  | x  | x  |    | x  |
-| 72 |   |   |    |   |   |   |   |   |   |    |    |    |    |    |     |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  | x  | x  | x  | x  | x  | x  | x  | x  | x  |    |
+| 🚦 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 31 | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 41 | 42 | 51 | 52 | 53 | 54 | 71 | 72 | 81 |
+|----|---|---|---|---|---|---|---|---|---|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| 1  |   |   |   |   | x |   |   |   | x |    |    |    | x  | x  |    |    |    |    | x  | x  | x  |    |    |    |    |    |    | x  |    |    |    |    |    |    |    |    |    |
+| 2  |   |   |   |   | x | x |   |   | x | x  | x  | x  | x  | x  |    |    | x  | x  |    |    | x  |    |    |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |
+| 3  |   |   |   |   | x | x | x | x |   |    | x  | x  | x  | x  | x  | x  |    |    |    |    | x  |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 4  |   |   |   |   |   |   |   | x |   |    |    | x  | x  | x  | x  | x  |    |    |    |    |    | x  | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 5  | x | x | x |   |   |   |   | x | x |    |    | x  |    |    | x  | x  |    |    | x  | x  |    |    | x  |    |    |    |    | x  |    |    |    |    |    |    |    |    |    |
+| 6  |   | x | x |   |   |   |   | x | x | x  | x  |    |    |    | x  | x  | x  | x  |    |    |    |    | x  |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |
+| 7  |   |   | x |   |   |   |   |   |   |    | x  |    |    |    | x  | x  | x  | x  |    |    |    |    |    | x  | x  |    |    |    |    |    |    |    |    |    |    |    |    |
+| 8  |   |   | x | x | x | x |   |   |   |    | x  | x  | x  | x  |    |    | x  | x  |    |    |    | x  |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |
+| 9  | x | x |   |   | x | x |   |   |   |    | x  | x  |    |    |    |    | x  | x  | x  | x  |    |    |    |    | x  |    |    | x  |    |    |    |    |    |    |    |    |    |
+| 10 |   | x |   |   |   | x |   |   |   |    |    |    |    |    |    |    | x  | x  | x  | x  |    |    |    |    |    | x  | x  |    |    |    |    |    |    |    |    |    |    |
+| 11 |   | x | x |   |   | x | x | x | x |    |    |    |    |    | x  | x  |    |    | x  | x  |    |    |    | x  |    |    | x  |    |    |    |    |    |    |    |    |    |    |
+| 12 |   | x | x | x | x |   |   | x | x |    |    |    | x  | x  |    |    |    |    | x  | x  |    | x  |    |    |    |    | x  |    |    |    |    |    |    |    |    |    |    |
+| 21 | x | x | x | x |   |   |   | x |   |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 22 | x | x | x | x |   |   |   | x |   |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 23 |   |   | x | x | x | x | x |   |   |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 24 |   |   | x | x | x | x | x |   |   |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 25 |   | x |   |   |   | x | x | x | x | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 26 |   | x |   |   |   | x | x | x | x | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 27 | x |   |   |   | x |   |   |   | x | x  | x  | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 28 | x |   |   |   | x |   |   |   | x | x  | x  | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 31 | x | x | x |   |   |   |   |   |   |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 32 |   |   |   | x |   |   |   | x |   |    |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 33 |   |   |   | x | x | x |   |   |   |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 34 |   |   | x |   |   |   | x |   |   |    | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 35 |   |   |   |   |   |   | x | x | x |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 36 |   | x |   |   |   | x |   |   |   | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 37 |   |   |   |   |   |   |   |   |   | x  | x  | x  |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 38 | x |   |   |   | x |   |   |   | x |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+| 41 |   |   |   |   |   |   |   |   |   |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  | x  |
+| 42 |   |   |   |   |   |   |   |   |   |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  | x  |
+| 51 |   |   |   |   |   |   |   |   |   |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  | x  |
+| 52 |   |   |   |   |   |   |   |   |   |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  | x  |
+| 53 |   |   |   |   |   |   |   |   |   |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  | x  |
+| 54 |   |   |   |   |   |   |   |   |   |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  | x  |
+| 71 |   |   |   |   |   |   |   |   |   |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  | x  | x  | x  | x  |    | x  |    |
+| 72 |   |   |   |   |   |   |   |   |   |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  | x  | x  | x  | x  | x  |    |    |
+| 81 |   |   |   |   |   |   |   |   |   |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    | x  | x  | x  | x  | x  | x  |    |    |    |
 
 
 En dan mag je dat lekker handmatig gaan implementeren in je controller.
